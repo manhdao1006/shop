@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://gos-dls.vercel.app/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
+
+# Disallow admin area
+Disallow: /ban-quan-tri/
+
+# Allow important pages
+Allow: /giai-dau/
+Allow: /lich-su/
+Allow: /bang-vang/
+Allow: /doi-tuyen/
+Allow: /doi-tuyen/lich-su/
+Allow: /doi-tuyen/thanh-tich/
+Allow: /doi-tuyen/ban-huan-luyen/
+Allow: /doi-tuyen/tuyen-thu/
