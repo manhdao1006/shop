@@ -62,7 +62,6 @@
                         @click="openPopup"
                     />
                     <h4 class="fst-italic text-white">STK: 555575575 (MB Bank)</h4>
-                    <h4 class="fst-italic text-white">ZALO: 0935678597</h4>
                     <h3
                         class="fw-bold bg-white text-primary-emphasis px-3 py-2 rounded mt-2 d-inline-block"
                     >
@@ -86,6 +85,14 @@
                                 title="Tiktok"
                             >
                                 <i class="fa-brands fa-tiktok"></i>
+                            </a>
+                            <a
+                                class="text-white text-decoration-none fw-bold"
+                                href="https://zalo.me/0935678597"
+                                target="_blank"
+                                title="Zalo"
+                            >
+                                Z
                             </a>
                         </div>
                     </div>

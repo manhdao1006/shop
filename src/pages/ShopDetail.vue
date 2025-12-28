@@ -77,6 +77,16 @@
                                     <i class="fa-brands fa-tiktok"></i>
                                     TikTok
                                 </a>
+
+                                <a
+                                    class="contact-item zl"
+                                    href="https://zalo.me/0935678597"
+                                    target="_blank"
+                                    rel="noopener"
+                                >
+                                    <span class="fw-bold">Z</span>
+                                    Zalo
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -125,9 +135,9 @@
 </template>
 <script setup>
     import { computed, onMounted, ref } from 'vue'
-import { useRoute } from 'vue-router'
-import Footer from '../components/Footer.vue'
-import Header from '../components/Header.vue'
+    import { useRoute } from 'vue-router'
+    import Footer from '../components/Footer.vue'
+    import Header from '../components/Header.vue'
 
     const route = useRoute()
 
@@ -407,6 +417,16 @@ import Header from '../components/Header.vue'
 
     .contact-item.tt:hover {
         background: #000;
+        color: #fff;
+    }
+
+    .contact-item.zl {
+        background: #eef3ff;
+        color: #54bfdd;
+    }
+
+    .contact-item.zl:hover {
+        background: #54bfdd;
         color: #fff;
     }
 </style>

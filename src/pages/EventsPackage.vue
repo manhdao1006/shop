@@ -79,6 +79,12 @@
                                     class="contact-icon tt"
                                     ><i class="fa-brands fa-tiktok"></i
                                 ></a>
+                                <a
+                                    href="https://zalo.me/0935678597"
+                                    target="_blank"
+                                    class="contact-icon zl text-decoration-none fw-bold"
+                                    >Z</a
+                                >
                             </div>
                         </div>
                     </div>
@@ -281,6 +287,9 @@
     }
     .contact-icon.tt {
         background: #010101;
+    }
+    .contact-icon.zl {
+        background: #54bfdd;
     }
 
     .contact-icon:hover {
