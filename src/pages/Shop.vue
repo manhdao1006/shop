@@ -3,41 +3,41 @@
         <Header />
 
         <div class="container-fluid mt-4">
-            <h2 class="fw-bold mb-3 text-white text-uppercase">Danh sách Acc DLS</h2>
+            <h2 class="fw-bold mb-3 text-white text-uppercase">{{ $t('shop.title') }}</h2>
 
             <div v-if="loading" class="loading-overlay">
                 <div class="spinner-border text-primary" role="status">
-                    <span class="visually-hidden">Đang tải...</span>
+                    <span class="visually-hidden">{{ $t('home.popup.loading') }}</span>
                 </div>
-                <p class="mt-2">Đang tải, vui lòng chờ...</p>
+                <p class="mt-2">{{ $t('home.popup.loading') }}</p>
             </div>
 
             <div v-else class="row">
                 <div class="col-lg-3 col-md-4 mb-3">
                     <div class="card p-3 filter-box">
-                        <h5 class="fw-bold mb-3">🔍 Tìm & lọc</h5>
+                        <h5 class="fw-bold mb-3">{{ $t('shop.search') }}</h5>
 
                         <div class="mb-3">
-                            <label class="form-label small fw-bold">Từ khóa</label>
+                            <label class="form-label small fw-bold">{{ $t('shop.keyword') }}</label>
                             <input
                                 v-model="filters.keyword"
                                 type="text"
                                 class="form-control form-control-sm"
-                                placeholder="Nhập mô tả..."
+                                :placeholder="$t('shop.placeholder')"
                             />
                         </div>
 
                         <div class="mb-3">
-                            <label class="form-label small fw-bold">Loại acc</label>
+                            <label class="form-label small fw-bold">{{ $t('shop.accType') }}</label>
                             <select v-model="filters.loaiAcc" class="form-select form-select-sm">
-                                <option value="">Tất cả</option>
-                                <option value="QG">Tuyển quốc gia</option>
-                                <option value="TD">Tự do</option>
+                                <option value="">{{ $t('shop.all') }}</option>
+                                <option value="QG">{{ $t('shop.national') }}</option>
+                                <option value="TD">{{ $t('shop.free') }}</option>
                             </select>
                         </div>
 
                         <button class="btn btn-outline-secondary btn-sm w-100" @click="resetFilter">
-                            🔄 Đặt lại bộ lọc
+                            {{ $t('shop.reset') }}
                         </button>
                     </div>
                 </div>
@@ -86,12 +86,20 @@
                                         </div>
                                     </div>
 
+                                    <div class="mt-3">
+                                        <p v-if="currentLocale === 'vi'" class="hero-subtitle">
+                                            {{ acc.giaTienViet }} VNĐ
+                                        </p>
+
+                                        <p v-else class="hero-subtitle">${{ acc.giaTienDo }}</p>
+                                    </div>
+
                                     <div class="mt-auto">
                                         <button
                                             class="btn btn-danger w-100 btn-sm mt-3 acc-btn"
                                             @click="goDetail(acc)"
                                         >
-                                            Xem chi tiết →
+                                            {{ $t('shop.viewDetail') }}
                                         </button>
                                     </div>
                                 </div>
@@ -99,7 +107,7 @@
                         </div>
 
                         <div v-if="paginatedAccs.length === 0" class="text-center py-5">
-                            Không có acc phù hợp
+                            {{ $t('shop.notExist') }}
                         </div>
                     </div>
                 </div>
@@ -111,7 +119,7 @@
                     :disabled="page === 1"
                     @click="page--"
                 >
-                    ‹ Trước
+                    {{ $t('shop.previous') }}
                 </button>
 
                 <span class="mx-2 fw-bold"> Trang {{ page }} / {{ totalPages }} </span>
@@ -121,7 +129,7 @@
                     :disabled="page === totalPages"
                     @click="page++"
                 >
-                    Sau ›
+                    {{ $t('shop.next') }}
                 </button>
             </div>
         </div>
@@ -143,7 +151,7 @@
                 loading: true,
                 sheetId: '1i0_6_WnX2rLZw4Uxc_Af4CViFFxVvK8VDoTH1eegyvo',
                 apiKey: 'AIzaSyBJOLTWvnRRegbkw1rRvr0K2dzV9SZ_Mwk',
-                rangeAcc: 'acc!A:J',
+                rangeAcc: 'acc!A:L',
                 page: 1,
                 pageSize: 9,
                 filters: {
@@ -154,6 +162,10 @@
         },
 
         computed: {
+            currentLocale() {
+                return this.$i18n.locale
+            },
+
             filteredAccs() {
                 return this.accs.filter((acc) => {
                     const keyword = this.filters.keyword.toLowerCase()
@@ -226,7 +238,7 @@
 
                         obj.daBan = Number(obj.daBan || 0)
 
-                        obj.loaiAccLabel = LOAI_ACC_MAP[obj.loaiAcc] || 'Không xác định'
+                        obj.loaiAccLabel = LOAI_ACC_MAP[obj.loaiAcc]
 
                         obj.tenAccText = obj.tenAcc?.replace(/<[^>]+>/g, '').slice(0, 30) + ' ...'
                         obj.moTaText = obj.moTa?.replace(/<[^>]+>/g, '').slice(0, 80) + '...'
@@ -350,5 +362,30 @@
     .acc-btn {
         border-radius: 10px;
         font-weight: 600;
+    }
+
+    .hero-subtitle {
+        width: 50%;
+        border-radius: 15px;
+        margin: 0 auto;
+        font-size: 1.2rem;
+        color: #ffffff;
+        background: linear-gradient(135deg, #ff0000, #ffdd00);
+        box-shadow:
+            0 0 15px rgba(255, 221, 0, 0.9),
+            0 0 10px rgba(255, 0, 0, 0.7);
+        animation: subtitleTag 1s infinite;
+        text-align: center;
+    }
+    @keyframes subtitleTag {
+        0%,
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+        50% {
+            transform: scale(1.05);
+            opacity: 0.85;
+        }
     }
 </style>

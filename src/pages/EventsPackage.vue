@@ -13,36 +13,55 @@
                 ></button>
                 <img
                     src="https://res.cloudinary.com/springboot-cloud/image/upload/v1766849051/chu-shop_tcdriz.jpg"
-                    alt="Ý nghĩa logo"
-                    title="Ý nghĩa logo"
+                    alt="HuHu DLS"
+                    title="HuHu DLS"
                     class="rounded rounded-circle"
                     width="200px"
                 />
                 <div class="popup-body">
                     <h5 class="fw-bold text-primary-emphasis mb-2">
-                        👋 Hữu Hưng nổi lên để thông báo
+                        {{ $t('home.popup.title') }}
                     </h5>
-                    <div>
-                        Shop sẽ
-                        <strong class="text-danger">hủy gói không hoàn tiền</strong> dưới các trường
-                        hợp:
-                    </div>
-                    <ul class="popup-list">
-                        <li>Khách hàng tự ý vào acc khi không thông báo với shop</li>
-                        <li>Khách hàng tự sử dụng vàng và kim cương</li>
-                        <li>Khách hàng tự ý hủy liên kết acc</li>
-                    </ul>
-                    <div>
-                        Thời hạn cày là <strong class="text-danger">45 ngày</strong> tính từ thời
-                        điểm Khách hàng giao mã liên kết
-                    </div>
+                    <template v-if="currentLocale === 'vi'">
+                        <div>
+                            Shop sẽ
+                            <strong class="text-danger">hủy gói không hoàn tiền</strong> dưới các
+                            trường hợp:
+                        </div>
+                        <ul class="popup-list">
+                            <li>Khách hàng tự ý vào acc khi không thông báo với shop</li>
+                            <li>Khách hàng tự sử dụng vàng và kim cương</li>
+                            <li>Khách hàng tự ý hủy liên kết acc</li>
+                        </ul>
+                        <div>
+                            Thời hạn cày là <strong class="text-danger">45 ngày</strong> tính từ
+                            thời điểm Khách hàng giao mã liên kết
+                        </div>
+                    </template>
+                    <template v-else>
+                        <div>
+                            The store will
+                            <strong class="text-danger">cancel the non-refundable package</strong>
+                            below in the following cases:
+                        </div>
+                        <ul class="popup-list">
+                            <li>Customer accesses the account without notifying the shop</li>
+                            <li>Customer uses gold and diamonds without permission</li>
+                            <li>Customer automatically cancels the linked account</li>
+                        </ul>
+                        <div>
+                            The grinding time is
+                            <strong class="text-danger">45 days</strong> from the time the
+                            customer's account is linked and encrypted.
+                        </div>
+                    </template>
                 </div>
             </div>
         </div>
 
         <section class="hero-section text-center py-4">
-            <h1 class="hero-title">Gói Cày Huyền Thoại + Sự kiện</h1>
-            <p class="hero-subtitle">!!! Ưu đãi: Cày sự kiện trong game chỉ từ 30.000 VNĐ</p>
+            <h1 class="hero-title">{{ $t('events.title') }}</h1>
+            <p class="hero-subtitle">{{ $t('events.description') }}</p>
         </section>
 
         <section class="packages-section py-5">
@@ -54,19 +73,19 @@
                         class="col-6 col-md-4 col-lg-3"
                     >
                         <div class="package-card text-center">
-                            <div class="package-tag">Ưu đãi</div>
+                            <div class="package-tag">{{ $t('events.promote') }}</div>
                             <div class="package-header">
                                 <h3>{{ pkg.name }}</h3>
                             </div>
                             <div class="package-body">
                                 <p v-if="pkg.price">
-                                    💵 Giá: <strong>{{ pkg.price }}</strong>
+                                    {{ $t('events.price') }}<strong>{{ pkg.price }}</strong>
                                 </p>
                                 <p v-if="pkg.desc" class="package-note">{{ pkg.desc }}</p>
                             </div>
 
                             <div class="package-contact mt-auto">
-                                <span>Liên hệ: </span>
+                                <span>{{ $t('events.contact') }}</span>
                                 <a
                                     href="https://www.facebook.com/hungdao123"
                                     target="_blank"
@@ -97,32 +116,62 @@
 </template>
 
 <script setup lang="ts">
-    import { onMounted, ref } from 'vue'
+    import { computed, onMounted, ref } from 'vue'
+    import { useI18n } from 'vue-i18n'
     import Footer from '../components/Footer.vue'
     import Header from '../components/Header.vue'
+    const { locale } = useI18n()
+    const currentLocale = computed(() => locale.value)
 
-    const eventPackages = [
-        {
-            name: 'GÓI HT1',
-            price: '100.000 VNĐ',
-            desc: '💰 Vàng + 💎 Kim cương • 1 cầu thủ huyền thoại ngẫu nhiên'
-        },
-        {
-            name: 'GÓI HT2',
-            price: '200.000 VNĐ',
-            desc: '💰 Vàng + 💎 Kim cương • 2 cầu thủ huyền thoại ngẫu nhiên'
-        },
-        {
-            name: 'GÓI HT3',
-            price: '300.000 VNĐ',
-            desc: '💰 Vàng + 💎 Kim cương • 3 cầu thủ huyền thoại ngẫu nhiên'
-        },
-        {
-            name: 'GÓI HT4',
-            price: '350.000 VNĐ',
-            desc: '💰 Vàng + 💎 Kim cương • 4 cầu thủ huyền thoại'
+    const eventPackages = computed(() => {
+        if (currentLocale.value === 'vi') {
+            return [
+                {
+                    name: 'GÓI HT1',
+                    price: '100.000 VNĐ',
+                    desc: '💰 Vàng + 💎 Kim cương • 1 cầu thủ huyền thoại ngẫu nhiên'
+                },
+                {
+                    name: 'GÓI HT2',
+                    price: '200.000 VNĐ',
+                    desc: '💰 Vàng + 💎 Kim cương • 2 cầu thủ huyền thoại ngẫu nhiên'
+                },
+                {
+                    name: 'GÓI HT3',
+                    price: '300.000 VNĐ',
+                    desc: '💰 Vàng + 💎 Kim cương • 3 cầu thủ huyền thoại ngẫu nhiên'
+                },
+                {
+                    name: 'GÓI HT4',
+                    price: '350.000 VNĐ',
+                    desc: '💰 Vàng + 💎 Kim cương • 4 cầu thủ huyền thoại'
+                }
+            ]
         }
-    ]
+
+        return [
+            {
+                name: 'PACKAGE L1',
+                price: '100,000 VND',
+                desc: '💰 Gold + 💎 Diamonds • 1 random legendary player'
+            },
+            {
+                name: 'PACKAGE L2',
+                price: '200,000 VND',
+                desc: '💰 Gold + 💎 Diamonds • 2 random legendary players'
+            },
+            {
+                name: 'PACKAGE L3',
+                price: '300,000 VND',
+                desc: '💰 Gold + 💎 Diamonds • 3 random legendary players'
+            },
+            {
+                name: 'PACKAGE L4',
+                price: '350,000 VND',
+                desc: '💰 Gold + 💎 Diamonds • 4 legendary players'
+            }
+        ]
+    })
 
     const showPopup = ref(true)
 

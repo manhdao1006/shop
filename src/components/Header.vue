@@ -20,29 +20,35 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto text-capitalize">
                     <li class="nav-item">
                         <router-link class="nav-link" to="/">{{
-                            $t('HEADER.HOMEPAGE')
+                            $t('header.homePage')
                         }}</router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link class="nav-link" to="/cua-hang">Cửa hàng</router-link>
+                        <router-link class="nav-link" to="/cua-hang">{{
+                            $t('header.shop')
+                        }}</router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link class="nav-link" to="/thu-mua">Thu mua</router-link>
+                        <router-link class="nav-link" to="/thu-mua">{{
+                            $t('header.buy')
+                        }}</router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link class="nav-link" to="/tai-nguyen"
-                            >Vàng + Kim cương</router-link
-                        >
+                        <router-link class="nav-link" to="/tai-nguyen">{{
+                            $t('header.resources')
+                        }}</router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link class="nav-link" to="/su-kien">Sự kiện</router-link>
+                        <router-link class="nav-link" to="/su-kien">{{
+                            $t('header.events')
+                        }}</router-link>
                     </li>
-                    <!-- <li class="nav-item mx-auto">
-                        <LanguageSwitcher />
-                    </li> -->
+                    <li class="nav-item mx-auto">
+                        <language-switcher />
+                    </li>
                 </ul>
             </div>
         </div>
@@ -55,13 +61,14 @@
     </nav>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+    import LanguageSwitcher from '../views/LanguageSwitcher.vue'
+</script>
 
 <style scoped>
     .navbar-wave {
         position: relative;
         background: linear-gradient(135deg, #ffffff 0%, #033155 35%, #54bfdd 100%);
-        overflow: hidden;
     }
 
     .navbar-wave .brand-title,

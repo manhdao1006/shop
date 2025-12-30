@@ -60,4 +60,9 @@
     .dropdown-menu {
         min-width: 100% !important;
     }
+
+    .dropdown {
+        position: relative;
+        z-index: 9999 !important;
+    }
 </style>

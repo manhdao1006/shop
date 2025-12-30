@@ -6,9 +6,9 @@
         <div
             class="container-fluid min-vh-100 d-flex align-items-center justify-content-center bg-team"
         >
-            <!-- <LanguageSwitcher
+            <LanguageSwitcher
                 class="shadow position-absolute top-0 start-0 m-3 d-flex align-items-center justify-content-center"
-            /> -->
+            />
 
             <div
                 v-if="showPopup"
@@ -23,29 +23,50 @@
                     ></button>
                     <img
                         src="https://res.cloudinary.com/springboot-cloud/image/upload/v1766849051/chu-shop_tcdriz.jpg"
-                        alt="Ý nghĩa logo"
-                        title="Ý nghĩa logo"
+                        alt="HuHu DLS"
+                        title="HuHu DLS"
                         class="rounded rounded-circle"
                         width="200px"
                     />
                     <div class="popup-body">
                         <h5 class="fw-bold text-primary-emphasis mb-2">
-                            👋 Hữu Hưng nổi lên để thông báo
+                            {{ $t('home.popup.title') }}
                         </h5>
-                        <div>
-                            Shop sẽ
-                            <strong class="text-danger">hủy gói không hoàn tiền</strong> dưới các
-                            trường hợp:
-                        </div>
-                        <ul class="popup-list">
-                            <li>Khách hàng tự ý vào acc khi không thông báo với shop</li>
-                            <li>Khách hàng tự sử dụng vàng và kim cương</li>
-                            <li>Khách hàng tự ý hủy liên kết acc</li>
-                        </ul>
-                        <div>
-                            Thời hạn cày là <strong class="text-danger">45 ngày</strong> tính từ
-                            thời điểm Khách hàng giao mã liên kết
-                        </div>
+                        <template v-if="currentLocale === 'vi'">
+                            <div>
+                                Shop sẽ
+                                <strong class="text-danger">hủy gói không hoàn tiền</strong> dưới
+                                các trường hợp:
+                            </div>
+                            <ul class="popup-list">
+                                <li>Khách hàng tự ý vào acc khi không thông báo với shop</li>
+                                <li>Khách hàng tự sử dụng vàng và kim cương</li>
+                                <li>Khách hàng tự ý hủy liên kết acc</li>
+                            </ul>
+                            <div>
+                                Thời hạn cày là <strong class="text-danger">45 ngày</strong> tính từ
+                                thời điểm Khách hàng giao mã liên kết
+                            </div>
+                        </template>
+                        <template v-else>
+                            <div>
+                                The store will
+                                <strong class="text-danger"
+                                    >cancel the non-refundable package</strong
+                                >
+                                below in the following cases:
+                            </div>
+                            <ul class="popup-list">
+                                <li>Customer accesses the account without notifying the shop</li>
+                                <li>Customer uses gold and diamonds without permission</li>
+                                <li>Customer automatically cancels the linked account</li>
+                            </ul>
+                            <div>
+                                The grinding time is
+                                <strong class="text-danger">45 days</strong> from the time the
+                                customer's account is linked and encrypted.
+                            </div>
+                        </template>
                     </div>
                 </div>
             </div>
@@ -144,28 +165,33 @@
 
 <script setup lang="ts">
     import { computed, onMounted, ref } from 'vue'
+    import { useI18n } from 'vue-i18n'
     import { useRouter } from 'vue-router'
+    import LanguageSwitcher from './LanguageSwitcher.vue'
 
     const router = useRouter()
+    const { locale } = useI18n()
+    const { t } = useI18n()
+    const currentLocale = computed(() => locale.value)
 
     const menuItems = computed(() => [
         {
-            label: 'Shop acc DLS',
+            label: t('home.services.shop'),
             icon: 'bi bi-cash-coin',
             route: '/cua-hang'
         },
         {
-            label: 'Thu mua acc DLS',
+            label: t('home.services.buy'),
             icon: 'bi bi-cart-plus-fill',
             route: '/thu-mua'
         },
         {
-            label: 'Cày vàng + kim cương',
+            label: t('home.services.resources'),
             icon: 'bi bi-gem',
             route: '/tai-nguyen'
         },
         {
-            label: 'Cày huyền thoại + sự kiện',
+            label: t('home.services.events'),
             icon: 'bi bi-calendar-event-fill',
             route: '/su-kien'
         }

@@ -4,7 +4,9 @@
 
         <div class="container-fluid pt-3">
             <nav class="breadcrumb-custom">
-                <RouterLink to="/cua-hang" class="breadcrumb-link"> Danh sách </RouterLink>
+                <RouterLink to="/cua-hang" class="breadcrumb-link">
+                    {{ $t('shop.detail.list') }}
+                </RouterLink>
                 <span class="breadcrumb-sep">›</span>
                 <span class="breadcrumb-current">
                     {{ acc?.tenAcc }}
@@ -13,24 +15,34 @@
         </div>
 
         <div class="container-fluid py-4">
-            <div v-if="loading" class="text-center text-white py-5">
-                <div class="spinner-border"></div>
-                <p class="mt-2">Đang tải chi tiết acc...</p>
+            <div v-if="loading" class="loading-overlay">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">{{ $t('home.popup.loading') }}</span>
+                </div>
+                <p class="mt-2">{{ $t('home.popup.loading') }}</p>
             </div>
 
             <div v-else-if="acc" class="acc-detail">
                 <div class="row g-4">
                     <div class="col-12 col-md-4 col-lg-5">
                         <div class="acc-info card h-100">
+                            <div class="mb-3">
+                                <p v-if="currentLocale === 'vi'" class="hero-subtitle">
+                                    {{ acc.giaTienViet }} VNĐ
+                                </p>
+
+                                <p v-else class="hero-subtitle">${{ acc.giaTienDo }}</p>
+                            </div>
                             <h2 class="fw-bold mb-3 text-uppercase">
                                 {{ acc.tenAcc }}
                             </h2>
                             <div class="acc-meta">
                                 <span class="acc-code">
-                                    Mã acc: <b>#{{ acc.maAcc }}</b>
+                                    {{ $t('shop.detail.accId') }}<b>#{{ acc.maAcc }}</b>
                                 </span>
                                 <span class="acc-type-text">
-                                    Loại: <b>{{ acc.loaiAcc }} - {{ loaiAccText }}</b>
+                                    {{ $t('shop.detail.accType')
+                                    }}<b>{{ acc.loaiAcc }} - {{ loaiAccText }}</b>
                                 </span>
                             </div>
 
@@ -56,7 +68,7 @@
                             <hr />
 
                             <div class="acc-contact">
-                                <span class="contact-title">Liên hệ:</span>
+                                <span class="contact-title">{{ $t('shop.detail.contact') }}</span>
 
                                 <a
                                     class="contact-item fb"
@@ -135,9 +147,14 @@
 </template>
 <script setup>
     import { computed, onMounted, ref } from 'vue'
+    import { useI18n } from 'vue-i18n'
     import { useRoute } from 'vue-router'
     import Footer from '../components/Footer.vue'
     import Header from '../components/Header.vue'
+
+    const { locale } = useI18n()
+
+    const currentLocale = computed(() => locale.value)
 
     const route = useRoute()
 
@@ -148,7 +165,7 @@
 
     const sheetId = '1i0_6_WnX2rLZw4Uxc_Af4CViFFxVvK8VDoTH1eegyvo'
     const apiKey = 'AIzaSyBJOLTWvnRRegbkw1rRvr0K2dzV9SZ_Mwk'
-    const rangeAcc = 'acc!A:J'
+    const rangeAcc = 'acc!A:L'
 
     const currentImage = computed(() => acc.value?.hinhAnhList?.[currentIndex.value])
 
@@ -188,6 +205,21 @@
     onMounted(fetchAccDetail)
 </script>
 <style scoped>
+    .loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        z-index: 9999;
+    }
+
     .breadcrumb-custom {
         display: flex;
         align-items: center;
@@ -428,5 +460,30 @@
     .contact-item.zl:hover {
         background: #54bfdd;
         color: #fff;
+    }
+
+    .hero-subtitle {
+        width: 40%;
+        border-radius: 15px;
+        margin: 0 auto;
+        font-size: 1.2rem;
+        color: #ffffff;
+        background: linear-gradient(135deg, #ff0000, #ffdd00);
+        box-shadow:
+            0 0 15px rgba(255, 221, 0, 0.9),
+            0 0 10px rgba(255, 0, 0, 0.7);
+        animation: subtitleTag 1s infinite;
+        text-align: center;
+    }
+    @keyframes subtitleTag {
+        0%,
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+        50% {
+            transform: scale(1.05);
+            opacity: 0.85;
+        }
     }
 </style>

@@ -3,8 +3,8 @@
         <Header />
 
         <section class="hero-section text-center py-4">
-            <h1 class="hero-title">Thu Mua Acc DLS</h1>
-            <p class="hero-subtitle">Thu mua nhanh – Giá tốt – Thanh toán uy tín</p>
+            <h1 class="hero-title">{{ $t('buy.title') }}</h1>
+            <p class="hero-subtitle">{{ $t('buy.description') }}</p>
         </section>
 
         <section class="packages-section py-5">
@@ -13,11 +13,11 @@
                     <div class="col-12 col-md-8 col-lg-6">
                         <div class="package-card text-left">
                             <div class="package-header text-center">
-                                <h3>Yêu cầu chụp ảnh</h3>
+                                <h3>{{ $t('buy.require') }}</h3>
                             </div>
 
                             <div class="package-body">
-                                <ul class="policy-list">
+                                <ul class="policy-list" v-if="currentLocale === 'vi'">
                                     <li>📸 Thông tin <strong>chỉ số cầu thủ</strong> trong game</li>
                                     <li>🪪 Thông tin <strong>card name</strong> trong game</li>
                                     <li>💰 Thông tin <strong>vàng & kim cương</strong> hiện có</li>
@@ -25,10 +25,20 @@
                                     <li>❌ Không chỉnh sửa, không che số liệu</li>
                                     <li>💬 Giá thu mua <strong>theo thỏa thuận</strong></li>
                                 </ul>
+                                <ul class="policy-list" v-else>
+                                    <li>📸 Player <strong>stats information</strong> in game</li>
+                                    <li>🪪 Player <strong>card name</strong> information</li>
+                                    <li>💰 Current <strong>gold & diamonds</strong></li>
+                                    <li>
+                                        ✅ Screenshot must be <strong>clear and complete</strong>
+                                    </li>
+                                    <li>❌ No editing, no covering numbers</li>
+                                    <li>💬 Purchase price <strong>by agreement</strong></li>
+                                </ul>
                             </div>
 
                             <div class="package-contact text-center mt-auto">
-                                <span>Liên hệ thu mua: </span>
+                                <span>{{ $t('buy.contact') }}</span>
                                 <a
                                     href="https://www.facebook.com/hungdao123"
                                     target="_blank"
@@ -61,8 +71,13 @@
     </div>
 </template>
 <script setup lang="ts">
+    import { computed } from 'vue'
+    import { useI18n } from 'vue-i18n'
     import Footer from '../components/Footer.vue'
     import Header from '../components/Header.vue'
+
+    const { locale } = useI18n()
+    const currentLocale = computed(() => locale.value)
 </script>
 
 <style scoped>
