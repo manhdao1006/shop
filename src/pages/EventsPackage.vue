@@ -152,22 +152,22 @@
         return [
             {
                 name: 'PACKAGE L1',
-                price: '100,000 VND',
+                price: '$4',
                 desc: '💰 Gold + 💎 Diamonds • 1 random legendary player'
             },
             {
                 name: 'PACKAGE L2',
-                price: '200,000 VND',
+                price: '$7,5',
                 desc: '💰 Gold + 💎 Diamonds • 2 random legendary players'
             },
             {
                 name: 'PACKAGE L3',
-                price: '300,000 VND',
+                price: '$11,5',
                 desc: '💰 Gold + 💎 Diamonds • 3 random legendary players'
             },
             {
                 name: 'PACKAGE L4',
-                price: '350,000 VND',
+                price: '$13,5',
                 desc: '💰 Gold + 💎 Diamonds • 4 legendary players'
             }
         ]
