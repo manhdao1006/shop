@@ -32,7 +32,6 @@
                             <select v-model="filters.loaiAcc" class="form-select form-select-sm">
                                 <option value="">Tất cả</option>
                                 <option value="QG">Tuyển quốc gia</option>
-                                <option value="CLB">Câu lạc bộ</option>
                                 <option value="TD">Tự do</option>
                             </select>
                         </div>
@@ -212,7 +211,6 @@
                     const header = rows[0]
                     const LOAI_ACC_MAP = {
                         QG: 'Tuyển quốc gia',
-                        CLB: 'Câu lạc bộ',
                         TD: 'Tự do'
                     }
 

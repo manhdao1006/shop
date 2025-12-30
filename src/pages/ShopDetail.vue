@@ -162,7 +162,7 @@
     const openPreview = () => (preview.value = true)
 
     const loaiAccText = computed(() => {
-        return { QG: 'Tuyển quốc gia', CLB: 'Câu lạc bộ', TD: 'Tự do' }[acc.value?.loaiAcc] || ''
+        return { QG: 'Tuyển quốc gia', TD: 'Tự do' }[acc.value?.loaiAcc] || ''
     })
 
     async function fetchAccDetail() {
