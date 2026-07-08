@@ -50,6 +50,12 @@
                         'https://res.cloudinary.com/springboot-cloud/image/upload/v1783425743/SNOS-210_beff8t.png',
                     title_code: 'SNOS - ??? - (3 số cuối)',
                     link_code: 'https://s.shopee.vn/40ejvlqfSl'
+                },
+                {
+                    link_image:
+                        'https://res.cloudinary.com/springboot-cloud/image/upload/v1783476050/SNOS-131_cgywcb.png',
+                    title_code: 'SNOS - ??? - (3 số cuối)',
+                    link_code: 'https://s.shopee.vn/3LP4tcC19q'
                 }
             ]
         }
@@ -60,6 +66,12 @@
                     'https://res.cloudinary.com/springboot-cloud/image/upload/v1783425743/SNOS-210_beff8t.png',
                 title_code: 'SNOS - ??? - (3 last number)',
                 link_code: 'https://s.shopee.vn/40ejvlqfSl'
+            },
+            {
+                link_image:
+                    'https://res.cloudinary.com/springboot-cloud/image/upload/v1783476050/SNOS-131_cgywcb.png',
+                title_code: 'SNOS - ??? - (3 số cuối)',
+                link_code: 'https://s.shopee.vn/3LP4tcC19q'
             }
         ]
     })
