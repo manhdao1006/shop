@@ -51,7 +51,8 @@ export default {
         contact: 'Contact for purchase: '
     },
     resources: {
-        title: 'Gold and Diamond Farming Package',
+        title: 'Get the code by clicking on the image',
+        get_code: 'Get code',
         description: '!!! Special Offer: Monthly gold farming package from only $7,5',
         promote: 'Offer',
         gold: '💰 Gold: ',

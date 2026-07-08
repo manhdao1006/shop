@@ -12,7 +12,7 @@
                             alt="DHH"
                             class="footer-logo"
                         />
-                        <span class="ms-0 ms-md-3 footer-title">Hữu Hưng DLS</span>
+                        <span class="ms-0 ms-md-3 footer-title">Seto Kanna Vietsub</span>
                     </router-link>
                     <div class="fst-italic text-white fw-bold footer-quote mt-2 text-capitalize">
                         {{ $t('footer.slogan') }}
@@ -44,7 +44,7 @@
             </div>
             <hr class="my-2" />
             <footer class="text-center text-white py-2 copy-right-mobile">
-                &copy; Copyright 2026 by Hữu Hưng DLS
+                &copy; Copyright 2026 by Seto Kanna Vietsub
             </footer>
         </div>
     </footer>

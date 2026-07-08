@@ -3,54 +3,14 @@
         <div class="container-fluid">
             <router-link class="navbar-brand fw-bold text-black d-flex align-items-center" to="/">
                 <img
-                    src="https://res.cloudinary.com/springboot-cloud/image/upload/v1766846898/HuHu-DLS-removebg-preview_so5iey.png"
-                    alt="DHH"
+                    src="https://res.cloudinary.com/springboot-cloud/image/upload/v1783424756/Thi%E1%BA%BFt_k%E1%BA%BF_ch%C6%B0a_c%C3%B3_t%C3%AAn_1_xoxail.png"
+                    alt="Seto Kanna Vietsub"
                     class="logo-navbar"
                 />
-                <span class="ms-3 brand-title">Hữu Hưng DLS</span>
+                <span class="ms-3 brand-title">Seto Kanna Vietsub</span>
             </router-link>
 
-            <button
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarNav"
-            >
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto text-capitalize">
-                    <li class="nav-item">
-                        <router-link class="nav-link" to="/">{{
-                            $t('header.homePage')
-                        }}</router-link>
-                    </li>
-                    <li class="nav-item">
-                        <router-link class="nav-link" to="/cua-hang">{{
-                            $t('header.shop')
-                        }}</router-link>
-                    </li>
-                    <li class="nav-item">
-                        <router-link class="nav-link" to="/thu-mua">{{
-                            $t('header.buy')
-                        }}</router-link>
-                    </li>
-                    <li class="nav-item">
-                        <router-link class="nav-link" to="/tai-nguyen">{{
-                            $t('header.resources')
-                        }}</router-link>
-                    </li>
-                    <li class="nav-item">
-                        <router-link class="nav-link" to="/su-kien">{{
-                            $t('header.events')
-                        }}</router-link>
-                    </li>
-                    <li class="nav-item mx-auto">
-                        <language-switcher />
-                    </li>
-                </ul>
-            </div>
+            <language-switcher />
         </div>
 
         <div class="wave-container">

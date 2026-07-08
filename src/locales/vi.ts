@@ -51,7 +51,8 @@ export default {
         contact: 'Liên hệ thu mua: '
     },
     resources: {
-        title: 'Gói Cày Vàng + Kim Cương',
+        title: 'Lấy mã bằng cách chọn vào ảnh',
+        get_code: 'Lấy code',
         description: '!!! Ưu đãi: Gói cày vàng theo tháng chỉ từ 200.000 VNĐ',
         promote: 'Ưu đãi',
         gold: '💰 Vàng: ',
