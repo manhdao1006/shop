@@ -5,6 +5,40 @@
         <section class="hero-section text-center py-3">
             <p class="hero-subtitle">{{ $t('resources.title') }}</p>
         </section>
+
+        <!-- Donate -->
+        <section class="donate-section py-5">
+            <div class="container">
+                <div class="donate-card">
+                    <h3 class="donate-title">
+                        ❤️ {{ currentLocale === 'vi' ? 'Ủng hộ mình' : 'Support Me' }}
+                    </h3>
+
+                    <p class="donate-text">
+                        {{
+                            currentLocale === 'vi'
+                                ? 'Nếu những mã code này hữu ích, bạn có thể ủng hộ mình một ly cà phê ☕.'
+                                : 'If these codes are helpful, you can support me with a cup of coffee ☕.'
+                        }}
+                    </p>
+
+                    <img
+                        src="https://res.cloudinary.com/springboot-cloud/image/upload/v1783596512/qrcode_ed58np.png"
+                        alt="Donate QR"
+                        class="donate-qr"
+                    />
+
+                    <p class="donate-note">
+                        {{
+                            currentLocale === 'vi'
+                                ? 'Quét mã QR để donate'
+                                : 'Scan QR code to donate'
+                        }}
+                    </p>
+                </div>
+            </div>
+        </section>
+
         <section class="filter-section py-3">
             <div class="container text-center">
                 <button
@@ -225,6 +259,61 @@
     .filter-btn.active {
         background: #ff0000;
         color: #fff;
+    }
+
+    /* Donate */
+
+    .donate-section {
+        background: #f8f9fa;
+    }
+
+    .donate-card {
+        max-width: 420px;
+        margin: auto;
+        padding: 30px;
+        text-align: center;
+        background: #fff;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .donate-title {
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+
+    .donate-text {
+        color: #666;
+        margin-bottom: 20px;
+    }
+
+    .donate-qr {
+        width: 250px;
+        max-width: 100%;
+        border-radius: 12px;
+        border: 5px solid #fff;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .donate-note {
+        margin-top: 15px;
+        color: #999;
+        font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+        .donate-card {
+            padding: 20px;
+        }
+
+        .donate-title {
+            font-size: 22px;
+        }
+
+        .donate-qr {
+            width: 200px;
+        }
     }
 
     @media (max-width: 991px) {
