@@ -55,7 +55,7 @@
                     link_image:
                         'https://res.cloudinary.com/springboot-cloud/image/upload/v1783558603/IPZZ-882_uglj6x.png',
                     title_code: 'IPZZ - ??? - (3 số cuối)',
-                    link_code: 'https://s.shopee.vn/3qLMX3HkeK'
+                    link_code: 'https://s.shopee.vn/3ViW8ZoVPG'
                 }
             ]
         }
@@ -71,7 +71,7 @@
                 link_image:
                     'https://res.cloudinary.com/springboot-cloud/image/upload/v1783558603/IPZZ-882_uglj6x.png',
                 title_code: 'IPZZ - ??? - (3 số cuối)',
-                link_code: 'https://s.shopee.vn/3qLMX3HkeK'
+                link_code: 'https://s.shopee.vn/3ViW8ZoVPG'
             }
         ]
     })
