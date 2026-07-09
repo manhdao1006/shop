@@ -55,7 +55,7 @@
                     link_image:
                         'https://res.cloudinary.com/springboot-cloud/image/upload/v1783476050/SNOS-131_cgywcb.png',
                     title_code: 'SNOS - ??? - (3 số cuối)',
-                    link_code: 'https://s.shopee.vn/3LP4tcC19q'
+                    link_code: 'https://s.shopee.vn/111BASDBiv'
                 },
                 {
                     link_image:
@@ -77,7 +77,7 @@
                 link_image:
                     'https://res.cloudinary.com/springboot-cloud/image/upload/v1783476050/SNOS-131_cgywcb.png',
                 title_code: 'SNOS - ??? - (3 last number)',
-                link_code: 'https://s.shopee.vn/3LP4tcC19q'
+                link_code: 'https://s.shopee.vn/111BASDBiv'
             },
             {
                 link_image:
