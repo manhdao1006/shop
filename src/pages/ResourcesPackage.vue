@@ -31,10 +31,17 @@
                     <p class="donate-note">
                         {{
                             currentLocale === 'vi'
-                                ? 'Quét mã QR để donate'
-                                : 'Scan QR code to donate'
+                                ? 'Quét mã QR để donate hoặc qua đường link'
+                                : 'Scan QR code to donate or link'
                         }}
                     </p>
+                    <a
+                        href="https://www.paypal.com/paypalme/KannaSeto"
+                        target="_blank"
+                        class="package-link"
+                    >
+                        Paypal
+                    </a>
                 </div>
             </div>
         </section>
