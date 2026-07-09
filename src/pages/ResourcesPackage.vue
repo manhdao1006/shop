@@ -5,6 +5,19 @@
         <section class="hero-section text-center py-3">
             <p class="hero-subtitle">{{ $t('resources.title') }}</p>
         </section>
+        <section class="filter-section py-3">
+            <div class="container text-center">
+                <button
+                    v-for="agency in agencies"
+                    :key="agency"
+                    class="filter-btn"
+                    :class="{ active: selectedAgency === agency }"
+                    @click="selectedAgency = agency"
+                >
+                    {{ agency }}
+                </button>
+            </div>
+        </section>
 
         <section class="packages-section py-2">
             <div class="container">
@@ -35,33 +48,37 @@
 </template>
 
 <script setup lang="ts">
-    import { computed } from 'vue'
+    import { computed, ref } from 'vue'
     import { useI18n } from 'vue-i18n'
     import Header from '../components/Header.vue'
 
     const { locale } = useI18n()
     const currentLocale = computed(() => locale.value)
+    const selectedAgency = ref('ALL')
 
-    const packages = computed(() => {
+    const allPackages = computed(() => {
         if (currentLocale.value === 'vi') {
             return [
                 {
                     link_image:
-                        'https://res.cloudinary.com/springboot-cloud/image/upload/v1783425743/SNOS-210_beff8t.png',
-                    title_code: 'SNOS - ??? - (3 số cuối)',
-                    link_code: 'https://s.shopee.vn/40ejvlqfSl'
+                        'https://res.cloudinary.com/springboot-cloud/image/upload/v1783558603/IPZZ-882_uglj6x.png',
+                    title_code: 'IPZZ - ??? - (3 số cuối)',
+                    link_code: 'https://s.shopee.vn/3ViW8ZoVPG',
+                    agency: 'IP'
                 },
                 {
                     link_image:
                         'https://res.cloudinary.com/springboot-cloud/image/upload/v1783476050/SNOS-131_cgywcb.png',
                     title_code: 'SNOS - ??? - (3 số cuối)',
-                    link_code: 'https://s.shopee.vn/111BASDBiv'
+                    link_code: 'https://s.shopee.vn/111BASDBiv',
+                    agency: 'S1'
                 },
                 {
                     link_image:
-                        'https://res.cloudinary.com/springboot-cloud/image/upload/v1783558603/IPZZ-882_uglj6x.png',
-                    title_code: 'IPZZ - ??? - (3 số cuối)',
-                    link_code: 'https://s.shopee.vn/3ViW8ZoVPG'
+                        'https://res.cloudinary.com/springboot-cloud/image/upload/v1783425743/SNOS-210_beff8t.png',
+                    title_code: 'SNOS - ??? - (3 số cuối)',
+                    link_code: 'https://s.shopee.vn/40ejvlqfSl',
+                    agency: 'S1'
                 }
             ]
         }
@@ -69,23 +86,40 @@
         return [
             {
                 link_image:
-                    'https://res.cloudinary.com/springboot-cloud/image/upload/v1783425743/SNOS-210_beff8t.png',
-                title_code: 'SNOS - ??? - (3 last number)',
-                link_code: 'https://s.shopee.vn/40ejvlqfSl'
+                    'https://res.cloudinary.com/springboot-cloud/image/upload/v1783558603/IPZZ-882_uglj6x.png',
+                title_code: 'IPZZ - ??? - (3 last number)',
+                link_code: 'https://s.shopee.vn/3ViW8ZoVPG',
+                agency: 'IP'
             },
             {
                 link_image:
                     'https://res.cloudinary.com/springboot-cloud/image/upload/v1783476050/SNOS-131_cgywcb.png',
                 title_code: 'SNOS - ??? - (3 last number)',
-                link_code: 'https://s.shopee.vn/111BASDBiv'
+                link_code: 'https://s.shopee.vn/111BASDBiv',
+                agency: 'S1'
             },
             {
                 link_image:
-                    'https://res.cloudinary.com/springboot-cloud/image/upload/v1783558603/IPZZ-882_uglj6x.png',
-                title_code: 'IPZZ - ??? - (3 last number)',
-                link_code: 'https://s.shopee.vn/3ViW8ZoVPG'
+                    'https://res.cloudinary.com/springboot-cloud/image/upload/v1783425743/SNOS-210_beff8t.png',
+                title_code: 'SNOS - ??? - (3 last number)',
+                link_code: 'https://s.shopee.vn/40ejvlqfSl',
+                agency: 'S1'
             }
         ]
+    })
+
+    const packages = computed(() => {
+        if (selectedAgency.value === 'ALL') {
+            return allPackages.value
+        }
+
+        return allPackages.value.filter((item) => item.agency === selectedAgency.value)
+    })
+
+    const agencies = computed(() => {
+        const list = [...new Set(allPackages.value.map((item) => item.agency))]
+
+        return ['ALL', ...list]
     })
 </script>
 
@@ -167,6 +201,30 @@
     .package-link:hover,
     .package-description:hover {
         text-decoration: none;
+    }
+
+    .filter-section {
+        padding: 20px 0;
+    }
+
+    .filter-btn {
+        margin: 5px;
+        padding: 8px 18px;
+        border: none;
+        border-radius: 30px;
+        background: #eee;
+        cursor: pointer;
+        transition: 0.3s;
+        font-weight: 600;
+    }
+
+    .filter-btn:hover {
+        background: #ffdd00;
+    }
+
+    .filter-btn.active {
+        background: #ff0000;
+        color: #fff;
     }
 
     @media (max-width: 991px) {
